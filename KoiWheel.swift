@@ -22,25 +22,13 @@ class KoiWheel: UIControl {
     get {
       let _value = clamp(Double(_cumulatedAngle/(2 * CGFloat.pi)))
       dprint("_cumulatedAngle: \(_cumulatedAngle) \n(2 * .pi): \((2 * CGFloat.pi)) \nvalue: \(_value) \n_cumulatedAngle/(2 * CGFloat.pi): \(_cumulatedAngle/(2 * CGFloat.pi))")
-      
-//      if _value < minimumValue {
-//        return minimumValue
-//      } else if maximumValue < _value {
-//        return maximumValue
-//      }
      
       return _value
     }
     set(newValue) {
       let _value = clamp(newValue)
-//      if _value < minimumValue {
-//        _value = minimumValue
-//      } else if maximumValue < value {
-//        _value = maximumValue
-//      }
       
       _cumulatedAngle = CGFloat(_value) * (2 * CGFloat.pi)
-      print("\(#line)")
       dprint("_cumulatedAngle: \(_cumulatedAngle) (#function)")
     }
   }
@@ -61,6 +49,7 @@ class KoiWheel: UIControl {
     get { return _cumulatedAngle }
     set(newCumulatedAngle) {
       _cumulatedAngle = newCumulatedAngle
+      
       dprint("_cumulatedAngle: \(_cumulatedAngle) **************** set(newCumulatedAngle) ")
       self.sendActions(for: .valueChanged)
     }
@@ -143,49 +132,6 @@ class KoiWheel: UIControl {
       self.animator!.addBehavior(ab)
       
       attachmentBehavior = ab
-      
-      // */
-      // TODO: Styling
-      /*
-      var calculatedRadius = _innerRadius + ((_outerRadius - _innerRadius)/2)
-       NSLog(@"_outerRadius:\t%.3f\t_innerRadius:\t%.3f\t_midPoint.x:\t%.3f\tcalculatedRadius:\t%.3f",_outerRadius,_innerRadius, _midPoint.x, calculatedRadius);
-       
-       UIBezierPath *circlePath = [UIBezierPath bezierPathWithArcCenter: _midPoint//center
-       radius: calculatedRadius
-       startAngle: M_PI
-       endAngle: M_PI + (2 * M_PI)
-       clockwise: YES];
-       
-       if (_knobTrackGradientLayer == nil)
-       {
-       _gradientMask = [CAShapeLayer layer];
-       _gradientMask.fillColor = [[UIColor clearColor] CGColor];
-       _gradientMask.strokeColor = [[UIColor blackColor] CGColor];
-       _gradientMask.lineWidth = _outerRadius - _innerRadius;
-       _gradientMask.frame = CGRectMake(0, 0, v.bounds.size.width, v.bounds.size.height);
-       
-       _gradientMask.path = circlePath.CGPath;
-       
-       CAGradientLayer *gradientLayer = [CAGradientLayer layer];
-       gradientLayer.startPoint = CGPointMake(0.5,1.0);
-       gradientLayer.endPoint = CGPointMake(0.5,0.0);
-       gradientLayer.frame = CGRectMake(0, 0, v.bounds.size.width, v.bounds.size.height);
-       _knobTrackGradientLayer = gradientLayer;
-       
-       [self updateGradient];
-       
-       [_knobTrackGradientLayer setMask:_gradientMask];
-       
-       [v.layer addSublayer:_knobTrackGradientLayer];
-       } else {
-       
-       _gradientMask.path = circlePath.CGPath;
-       _gradientMask.lineWidth = _outerRadius - _innerRadius;
-       _gradientMask.frame = r;
-       
-       _knobTrackGradientLayer.frame = r;
-       }
-      */
     }
     
   }
