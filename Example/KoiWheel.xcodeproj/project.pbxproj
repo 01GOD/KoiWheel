@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		48918FB6216BC7A100E27A51 /* SimpleKoiWheelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48918FB4216BC7A000E27A51 /* SimpleKoiWheelViewController.swift */; };
-		48918FB7216BC7A100E27A51 /* KoiWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48918FB5216BC7A000E27A51 /* KoiWheel.swift */; };
+		48FC345C216BCF0E00D95EBE /* KoiWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FC345B216BCF0E00D95EBE /* KoiWheel.swift */; };
 		4A7396577D79B343FBCCABFF /* Pods_KoiWheel_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF90A016C8924532F96979F1 /* Pods_KoiWheel_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
@@ -33,7 +33,7 @@
 		2BB215E300BB2C053AF27173 /* KoiWheel.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = KoiWheel.podspec; path = ../KoiWheel.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		3CC7FD5D4E28031D56200131 /* Pods-KoiWheel_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KoiWheel_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-KoiWheel_Example/Pods-KoiWheel_Example.release.xcconfig"; sourceTree = "<group>"; };
 		48918FB4216BC7A000E27A51 /* SimpleKoiWheelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleKoiWheelViewController.swift; sourceTree = "<group>"; };
-		48918FB5216BC7A000E27A51 /* KoiWheel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KoiWheel.swift; sourceTree = "<group>"; };
+		48FC345B216BCF0E00D95EBE /* KoiWheel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KoiWheel.swift; path = ../../KoiWheel.swift; sourceTree = "<group>"; };
 		4B13B80F280BD40CF16F285C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* KoiWheel_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KoiWheel_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -99,7 +99,7 @@
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
-				48918FB5216BC7A000E27A51 /* KoiWheel.swift */,
+				48FC345B216BCF0E00D95EBE /* KoiWheel.swift */,
 				48918FB4216BC7A000E27A51 /* SimpleKoiWheelViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
@@ -350,7 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48918FB6216BC7A100E27A51 /* SimpleKoiWheelViewController.swift in Sources */,
-				48918FB7216BC7A100E27A51 /* KoiWheel.swift in Sources */,
+				48FC345C216BCF0E00D95EBE /* KoiWheel.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
