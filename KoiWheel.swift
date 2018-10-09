@@ -1,6 +1,6 @@
 //
 //  KoiWheel.swift
-//  Scratchpad
+//  KoiWheel
 //
 //  Created by Kwabena A. Fordjour Jr. on 2018-10-02.
 //  Copyright © 2018 Kwabena A. Fordjour. All rights reserved.
@@ -16,8 +16,6 @@ import UIKit
     if DEBUG { print("DEBUG: \(str)") }
   }
   
-//  private var _value: Double = 0.0
-  
   @IBInspectable var value: Double {
     get {
       let _value = clamp(Double(_cumulatedAngle/(2 * CGFloat.pi)))
@@ -26,14 +24,42 @@ import UIKit
       return _value
     }
     set(newValue) {
+      // Adjust Boundary Values, Similar to UISlider behaviour
+      // Currently no way to update values in IB :(
+      if newValue < minimumValue {
+        minimumValue = newValue
+      }
+      if maximumValue < newValue {
+        maximumValue = newValue
+      }
       let _value = clamp(newValue)
       
       _cumulatedAngle = CGFloat(_value) * (2 * CGFloat.pi)
       dprint("_cumulatedAngle: \(_cumulatedAngle) (#function)")
     }
   }
-  @IBInspectable var minimumValue: Double = 0.0
-  @IBInspectable var maximumValue: Double = 100.0
+  @IBInspectable var minimumValue: Double = 0.0 {
+    didSet {
+      // Adjust Boundary Values, Similar to UISlider behaviour
+      if value < minimumValue {
+        value = minimumValue
+      }
+      if maximumValue < minimumValue {
+        maximumValue = minimumValue
+      }
+    }
+  }
+  @IBInspectable var maximumValue: Double = 100.0 {
+    didSet {
+      // Adjust Boundary Values, Similar to UISlider behaviour
+      if maximumValue < value {
+        value = maximumValue
+      }
+      if maximumValue < minimumValue {
+        minimumValue = maximumValue
+      }
+    }
+  }
   @IBInspectable var angularResistance = 1.0
   
   @IBOutlet var knobRotatingView: UIView?
@@ -131,7 +157,7 @@ import UIKit
 
       _outerRadius  = size/2
       _innerRadius = (6 * _outerRadius)/100
-      _midPoint = CGPoint(x: r.size.width/2, y: r.size.height/2)// convert((knobRotatingView?.center)!, to: self)// convert(center, to: superview)
+      _midPoint = CGPoint(x: r.size.width/2, y: r.size.height/2)
 
       if attachmentBehavior != nil {
         animator!.removeBehavior(attachmentBehavior!)
@@ -472,5 +498,3 @@ extension KoiWheel: UIDynamicAnimatorDelegate {
   
   
 }
-
-

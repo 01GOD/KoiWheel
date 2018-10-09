@@ -63,10 +63,10 @@
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="value">
-                                        <real key="value" value="0.10000000000000001"/>
+                                        <real key="value" value="25"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
-                                        <real key="value" value="100"/>
+                                        <real key="value" value="50"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
                                         <real key="value" value="0.0"/>
@@ -91,12 +91,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="3" translatesAutoresizingMaskIntoConstraints="NO" id="vhd-Ow-1D6">
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="-5" minValue="-5" maxValue="-5" translatesAutoresizingMaskIntoConstraints="NO" id="vhd-Ow-1D6">
                                 <rect key="frame" x="128" y="564" width="118" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </slider>
                         </subviews>
                         <color key="backgroundColor" cyan="0.049890189139999999" magenta="0.1168587133" yellow="0.010448686780000001" black="0.0" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="t2c-Kg-MoB" firstAttribute="centerX" secondItem="s4D-hL-ZvJ" secondAttribute="centerX" id="52o-JT-AgT"/>
                             <constraint firstItem="s4D-hL-ZvJ" firstAttribute="top" secondItem="t2c-Kg-MoB" secondAttribute="bottom" constant="15" id="8pb-3F-iSy"/>
@@ -114,6 +115,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oMU-K5-43R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="Z8c-6m-GmZ">
+                    <connections>
+                        <action selector="onPan:" destination="9ie-5q-EIg" id="4z7-pg-wFd"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="468" y="-138"/>
         </scene>
