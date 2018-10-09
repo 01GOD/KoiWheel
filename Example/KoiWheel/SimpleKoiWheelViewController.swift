@@ -21,12 +21,12 @@ class SimpleKoiWheelViewController: UIViewController {
     updateColors(value: 0.0)
     
     
-    let max = 2.25
-    wheel.maximumValue = max
-    wheel.value = 200.119
-    print("Max Test: \(wheel.value == max ? "🙆🏾‍♀️" : "🙅🏼‍♂️")")
+//    let max = 2.25
+//    wheel.maximumValue = max
+//    wheel.value = 200.119
+//    print("Max Test: \(wheel.value == max ? "🙆🏾‍♀️" : "🙅🏼‍♂️")")
     
-    wheel.minimumValue = -0.5
+//    wheel.minimumValue = -0.5
     
   }
   

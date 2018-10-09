@@ -8,7 +8,7 @@
 
 import UIKit
 
-class KoiWheel: UIControl {
+@IBDesignable class KoiWheel: UIControl {
   
   var DEBUG = false
   
@@ -32,8 +32,8 @@ class KoiWheel: UIControl {
       dprint("_cumulatedAngle: \(_cumulatedAngle) (#function)")
     }
   }
-  @IBInspectable var minimumValue = 0.0
-  @IBInspectable var maximumValue = 100.0
+  @IBInspectable var minimumValue: Double = 0.0
+  @IBInspectable var maximumValue: Double = 100.0
   @IBInspectable var angularResistance = 1.0
   
   @IBOutlet var knobRotatingView: UIView?
@@ -95,10 +95,16 @@ class KoiWheel: UIControl {
     if knobRotatingView == nil {
       knobRotatingView = defaultKnobView()
       self.addSubview(knobRotatingView!)
+      knobRotatingView?.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+      knobRotatingView?.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
     }
     
     let r = frame
     let size = min(r.size.width, r.size.height)
+    
+    heightAnchor.constraint(equalToConstant: size).isActive = true
+    widthAnchor.constraint(equalToConstant: size).isActive = true
+    
     self.layer.cornerRadius = size/2
     
   }
@@ -273,9 +279,13 @@ extension KoiWheel {
     let padding = CGFloat(8.0)
     let size = min(frame.width - padding, frame.height - padding)
     var vframe = CGRect()
-    vframe.size = CGSize(width: size, height: size)
+    vframe.size = CGSize(width: size, height: size) // Not needed
     
     let dView = UIView(frame: vframe)
+    
+    dView.translatesAutoresizingMaskIntoConstraints = false
+    dView.heightAnchor.constraint(equalToConstant: size).isActive = true
+    dView.widthAnchor.constraint(equalToConstant: size).isActive = true
     
     let d: CGFloat = 5.0
     

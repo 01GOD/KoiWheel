@@ -56,42 +56,30 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s4D-hL-ZvJ" customClass="KoiWheel" customModule="KoiWheel_Example" customModuleProvider="target">
                                 <rect key="frame" x="71" y="217" width="233" height="233"/>
-                                <subviews>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C6j-2b-NMS">
-                                        <rect key="frame" x="8.5" y="8.5" width="216" height="216"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HJa-Ye-zVZ">
-                                                <rect key="frame" x="83" y="8" width="51" height="51"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.045304816380000001" green="0.70558375630000003" blue="0.53386269249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            </view>
-                                        </subviews>
-                                        <color key="backgroundColor" red="1" green="0.1079272791" blue="0.76909463" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="216" id="1uF-XJ-q0m"/>
-                                            <constraint firstAttribute="width" constant="216" id="DZ8-Ng-EoS"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="233" id="5ro-1u-Hm7"/>
-                                    <constraint firstItem="C6j-2b-NMS" firstAttribute="centerY" secondItem="s4D-hL-ZvJ" secondAttribute="centerY" id="AHL-Vs-D9j"/>
-                                    <constraint firstAttribute="height" constant="233" id="PlA-p4-gxd"/>
-                                    <constraint firstItem="C6j-2b-NMS" firstAttribute="centerX" secondItem="s4D-hL-ZvJ" secondAttribute="centerX" id="Rjk-7Z-0zY"/>
-                                </constraints>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                        <real key="value" value="100"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="onWheelValueChanged:" destination="9ie-5q-EIg" eventType="valueChanged" id="Nk1-AY-SLT"/>
                                 </connections>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wheel Value:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7C-OV-g24">
-                                <rect key="frame" x="135.5" y="128" width="104.5" height="23.5"/>
+                                <rect key="frame" x="135.5" y="145" width="104.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2c-Kg-MoB">
-                                <rect key="frame" x="166" y="166.5" width="43" height="23.5"/>
+                                <rect key="frame" x="166" y="178.5" width="43" height="23.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="4Ym-Sh-76l"/>
                                 </constraints>
@@ -107,11 +95,11 @@
                         <color key="backgroundColor" cyan="0.049890189139999999" magenta="0.1168587133" yellow="0.010448686780000001" black="0.0" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                         <constraints>
                             <constraint firstItem="t2c-Kg-MoB" firstAttribute="centerX" secondItem="s4D-hL-ZvJ" secondAttribute="centerX" id="52o-JT-AgT"/>
-                            <constraint firstItem="s4D-hL-ZvJ" firstAttribute="top" secondItem="t2c-Kg-MoB" secondAttribute="bottom" constant="27" id="8pb-3F-iSy"/>
+                            <constraint firstItem="s4D-hL-ZvJ" firstAttribute="top" secondItem="t2c-Kg-MoB" secondAttribute="bottom" constant="15" id="8pb-3F-iSy"/>
                             <constraint firstItem="s4D-hL-ZvJ" firstAttribute="centerX" secondItem="pEL-Md-SRD" secondAttribute="centerX" id="DEU-0p-dEM"/>
                             <constraint firstItem="s4D-hL-ZvJ" firstAttribute="centerY" secondItem="pEL-Md-SRD" secondAttribute="centerY" id="Icj-7n-HFm"/>
                             <constraint firstItem="c7C-OV-g24" firstAttribute="centerX" secondItem="t2c-Kg-MoB" secondAttribute="centerX" id="ZYJ-8M-bah"/>
-                            <constraint firstItem="t2c-Kg-MoB" firstAttribute="top" secondItem="c7C-OV-g24" secondAttribute="bottom" constant="15" id="j4k-aR-NuF"/>
+                            <constraint firstItem="t2c-Kg-MoB" firstAttribute="top" secondItem="c7C-OV-g24" secondAttribute="bottom" constant="10" id="j4k-aR-NuF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HBP-hG-aZQ"/>
                     </view>
