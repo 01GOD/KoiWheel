@@ -20,14 +20,6 @@ class SimpleKoiWheelViewController: UIViewController {
     // Do any additional setup after loading the view.
     updateColors(value: 0.0)
     
-    
-//    let max = 2.25
-//    wheel.maximumValue = max
-//    wheel.value = 200.119
-//    print("Max Test: \(wheel.value == max ? "🙆🏾‍♀️" : "🙅🏼‍♂️")")
-    
-//    wheel.minimumValue = -0.5
-    
   }
   
   @IBAction func onWheelValueChanged(_ sender: KoiWheel) {
