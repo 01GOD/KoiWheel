@@ -91,22 +91,30 @@ import UIKit
     
     animator = UIDynamicAnimator(referenceView: self)
     animator?.delegate = self
-    
+#if !TARGET_INTERFACE_BUILDER
     if knobRotatingView == nil {
-      knobRotatingView = defaultKnobView()
-      self.addSubview(knobRotatingView!)
-      knobRotatingView?.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-      knobRotatingView?.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+      // Setting knobRotatingView to anything but nil causes IB to throw an exception
+      knobRotatingView = setupDefaultKnobView()
     }
-    
+#endif
+
     let r = frame
     let size = min(r.size.width, r.size.height)
-    
+
     heightAnchor.constraint(equalToConstant: size).isActive = true
     widthAnchor.constraint(equalToConstant: size).isActive = true
+
+    layer.cornerRadius = size/2
     
-    self.layer.cornerRadius = size/2
-    
+  }
+  
+  override func prepareForInterfaceBuilder() {
+    let r = frame
+    let size = min(r.size.width, r.size.height)
+    layer.cornerRadius = size/2
+
+    let v = setupDefaultKnobView()
+    v.transform = CGAffineTransform(rotationAngle: CGFloat(_cumulatedAngle))
   }
   
   override func layoutSubviews() {
@@ -129,7 +137,7 @@ import UIKit
         animator!.removeBehavior(attachmentBehavior!)
       }
       let ab = UIAttachmentBehavior.init(item: v,
-                                         offsetFromCenter: UIOffsetMake(0.0, 0.0),
+                                         offsetFromCenter: UIOffset.init(horizontal: 0.0, vertical: 0.0),
                                          attachedToAnchor: _midPoint)
       ab.damping = 1000
       ab.length = 0
@@ -275,23 +283,23 @@ extension KoiWheel {
     return _value
   }
   
-  func defaultKnobView() -> UIView {
+  func setupDefaultKnobView() -> UIView {
     let padding = CGFloat(8.0)
     let size = min(frame.width - padding, frame.height - padding)
     var vframe = CGRect()
     vframe.size = CGSize(width: size, height: size) // Not needed
-    
+
     let dView = UIView(frame: vframe)
-    
+
     dView.translatesAutoresizingMaskIntoConstraints = false
     dView.heightAnchor.constraint(equalToConstant: size).isActive = true
     dView.widthAnchor.constraint(equalToConstant: size).isActive = true
-    
+
     let d: CGFloat = 5.0
-    
+
     dView.backgroundColor = tintColor
     dView.layer.cornerRadius = size/2
-    
+
     let orientationMarker = CALayer()
     orientationMarker.backgroundColor = UIColor.white.cgColor
     orientationMarker.cornerRadius = size/(2*d)
@@ -299,10 +307,14 @@ extension KoiWheel {
     orientationMarker.shadowRadius = CGFloat(3.0)
     orientationMarker.shadowOffset = CGSize(width: 2.0, height: 2.0)
     orientationMarker.shadowOpacity = 0.15
-    
+
     orientationMarker.frame = CGRect(x: size/2 - size/(2 * d), y: size/15, width: size/d, height: size/d)
-    
+
     dView.layer.addSublayer(orientationMarker)
+    
+    self.addSubview(dView)
+    dView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+    dView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
     
     isDefaultKnobView = true
     
