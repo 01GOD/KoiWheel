@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		48918FB6216BC7A100E27A51 /* SimpleKoiWheelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48918FB4216BC7A000E27A51 /* SimpleKoiWheelViewController.swift */; };
+		4892A273216D9B9400883B0C /* record_glare.png in Resources */ = {isa = PBXBuildFile; fileRef = 4892A271216D9B9400883B0C /* record_glare.png */; };
+		4892A274216D9B9400883B0C /* record.png in Resources */ = {isa = PBXBuildFile; fileRef = 4892A272216D9B9400883B0C /* record.png */; };
+		4892A276216DB36700883B0C /* ConfigurableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4892A275216DB36700883B0C /* ConfigurableViewController.swift */; };
 		48FC345C216BCF0E00D95EBE /* KoiWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FC345B216BCF0E00D95EBE /* KoiWheel.swift */; };
 		4A7396577D79B343FBCCABFF /* Pods_KoiWheel_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF90A016C8924532F96979F1 /* Pods_KoiWheel_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
@@ -33,6 +36,9 @@
 		2BB215E300BB2C053AF27173 /* KoiWheel.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = KoiWheel.podspec; path = ../KoiWheel.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		3CC7FD5D4E28031D56200131 /* Pods-KoiWheel_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KoiWheel_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-KoiWheel_Example/Pods-KoiWheel_Example.release.xcconfig"; sourceTree = "<group>"; };
 		48918FB4216BC7A000E27A51 /* SimpleKoiWheelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleKoiWheelViewController.swift; sourceTree = "<group>"; };
+		4892A271216D9B9400883B0C /* record_glare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = record_glare.png; sourceTree = "<group>"; };
+		4892A272216D9B9400883B0C /* record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = record.png; sourceTree = "<group>"; };
+		4892A275216DB36700883B0C /* ConfigurableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableViewController.swift; sourceTree = "<group>"; };
 		48FC345B216BCF0E00D95EBE /* KoiWheel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KoiWheel.swift; path = ../../KoiWheel.swift; sourceTree = "<group>"; };
 		4B13B80F280BD40CF16F285C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* KoiWheel_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KoiWheel_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +107,9 @@
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				48FC345B216BCF0E00D95EBE /* KoiWheel.swift */,
 				48918FB4216BC7A000E27A51 /* SimpleKoiWheelViewController.swift */,
+				4892A275216DB36700883B0C /* ConfigurableViewController.swift */,
+				4892A271216D9B9400883B0C /* record_glare.png */,
+				4892A272216D9B9400883B0C /* record.png */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -254,6 +263,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4892A274216D9B9400883B0C /* record.png in Resources */,
+				4892A273216D9B9400883B0C /* record_glare.png in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
@@ -349,6 +360,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4892A276216DB36700883B0C /* ConfigurableViewController.swift in Sources */,
 				48918FB6216BC7A100E27A51 /* SimpleKoiWheelViewController.swift in Sources */,
 				48FC345C216BCF0E00D95EBE /* KoiWheel.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,

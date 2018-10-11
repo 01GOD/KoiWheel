@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="r1B-1I-uS2">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -12,21 +12,75 @@
         <!--Adjustable-->
         <scene sceneID="EkJ-Wc-W1h">
             <objects>
-                <viewController id="0DO-16-5hB" sceneMemberID="viewController">
+                <viewController id="0DO-16-5hB" customClass="ConfigurableViewController" customModule="KoiWheel_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2cO-9r-flY"/>
                         <viewControllerLayoutGuide type="bottom" id="cnz-pg-uG8"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ST6-b4-QZn">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bzm-qj-uV8">
+                                <rect key="frame" x="24" y="28" width="272" height="483"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Obb-Uf-eOk">
+                                        <rect key="frame" x="0.0" y="0.0" width="272" height="483"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jM0-cX-GbL">
+                                                <rect key="frame" x="4" y="0.0" width="264" height="281"/>
+                                                <color key="backgroundColor" red="0.92584118920000003" green="0.94577738290000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="NE5-0P-DIG"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="169" id="X4U-v3-dcT"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0F0-nE-AJp" customClass="KoiWheel" customModule="KoiWheel_Example" customModuleProvider="target">
+                                                <rect key="frame" x="36.5" y="284" width="199" height="199"/>
+                                                <color key="backgroundColor" red="0.045304816380000001" green="0.70558375630000003" blue="0.53386269249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="0F0-nE-AJp" secondAttribute="height" multiplier="1:1" priority="999" id="0O3-Iw-Hq4"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="knobOverlayImage" value="record_glare.png"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                        <real key="value" value="0.625"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="knobImage" value="record.png"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="overlayAlpha">
+                                                        <real key="value" value="0.65000000000000002"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="jM0-cX-GbL" secondAttribute="trailing" constant="4" id="2ju-Kh-OEv"/>
+                                            <constraint firstItem="jM0-cX-GbL" firstAttribute="leading" secondItem="Obb-Uf-eOk" secondAttribute="leading" constant="4" id="Ve3-gv-gwd"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Obb-Uf-eOk" secondAttribute="bottom" id="0EV-lW-KaC"/>
+                                    <constraint firstItem="Obb-Uf-eOk" firstAttribute="leading" secondItem="bzm-qj-uV8" secondAttribute="leading" id="BJq-LD-QP8"/>
+                                    <constraint firstItem="Obb-Uf-eOk" firstAttribute="top" secondItem="bzm-qj-uV8" secondAttribute="top" id="YGO-dw-GG7"/>
+                                    <constraint firstAttribute="trailing" secondItem="Obb-Uf-eOk" secondAttribute="trailing" id="hFk-xo-KZG"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="bzm-qj-uV8" secondAttribute="trailing" constant="8" id="75e-J5-J3k"/>
+                            <constraint firstItem="bzm-qj-uV8" firstAttribute="leading" secondItem="ST6-b4-QZn" secondAttribute="leadingMargin" constant="8" id="WpM-pG-Mo8"/>
+                            <constraint firstItem="bzm-qj-uV8" firstAttribute="top" secondItem="2cO-9r-flY" secondAttribute="bottom" constant="8" id="hmM-n7-lyi"/>
+                            <constraint firstItem="cnz-pg-uG8" firstAttribute="top" secondItem="bzm-qj-uV8" secondAttribute="bottom" constant="8" id="zXh-5T-Czj"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Adjustable" id="9Qp-Sd-0MU"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="STW-li-fHD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="469" y="545"/>
+            <point key="canvasLocation" x="468" y="544.67766116941539"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="1tJ-G1-Ih2">
@@ -51,11 +105,11 @@
             <objects>
                 <viewController title="Koi Wheel Simple" id="9ie-5q-EIg" customClass="SimpleKoiWheelViewController" customModule="KoiWheel_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pEL-Md-SRD">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s4D-hL-ZvJ" customClass="KoiWheel" customModule="KoiWheel_Example" customModuleProvider="target">
-                                <rect key="frame" x="71" y="217" width="233" height="233"/>
+                                <rect key="frame" x="43.5" y="167.5" width="233" height="233"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="233" id="PdS-XH-Qdi"/>
@@ -63,7 +117,7 @@
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="value">
-                                        <real key="value" value="25"/>
+                                        <real key="value" value="25.5"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
                                         <real key="value" value="50"/>
@@ -77,13 +131,13 @@
                                 </connections>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wheel Value:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7C-OV-g24">
-                                <rect key="frame" x="135.5" y="145" width="104.5" height="23.5"/>
+                                <rect key="frame" x="108" y="95.5" width="104.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2c-Kg-MoB">
-                                <rect key="frame" x="166" y="178.5" width="43" height="23.5"/>
+                                <rect key="frame" x="138.5" y="129" width="43" height="23.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="4Ym-Sh-76l"/>
                                 </constraints>
@@ -120,4 +174,8 @@
             <point key="canvasLocation" x="468" y="-138"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="record.png" width="800" height="800"/>
+        <image name="record_glare.png" width="800" height="800"/>
+    </resources>
 </document>

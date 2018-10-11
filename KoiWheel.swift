@@ -60,12 +60,43 @@ import UIKit
       }
     }
   }
-  @IBInspectable var angularResistance = 1.0
+  @IBInspectable var angularResistance: Double = 1.0
   
-  @IBOutlet var knobRotatingView: UIView?
+  @IBInspectable var knobImage: UIImage? {
+    didSet {
+      knobRotatingView = setupDefaultKnobView()
+    }
+  }
+  @IBInspectable var knobOverlayImage: UIImage? {
+    didSet {
+      if _knobOverlayView != nil {
+        _knobOverlayView?.removeFromSuperview()
+      }
+      
+      guard knobOverlayImage != nil else { return }
+      
+      _knobOverlayView = UIImageView(image: knobOverlayImage)
+      _knobOverlayView?.translatesAutoresizingMaskIntoConstraints = false
+      
+      guard _knobOverlayView != nil else { return }
+      
+      addSubview(_knobOverlayView!)
+      bringSubviewToFront(_knobOverlayView!)
+    }
+  }
+  @IBInspectable var overlayAlpha: CGFloat = 1.0 {
+    didSet {
+      guard _knobOverlayView != nil else { return }
+      _knobOverlayView?.alpha = overlayAlpha
+    }
+  }
+  
+  @IBOutlet var knobRotatingView: UIImageView?
   // Just used so I can update knob default color when tintColor changes
   // Probably smarter way to do this
   private var isDefaultKnobView = false
+  
+  var _knobOverlayView: UIImageView?
   
   private var _midPoint = CGPoint.zero
   private var _last_timestamp: TimeInterval = 0.0
@@ -117,31 +148,46 @@ import UIKit
     
     animator = UIDynamicAnimator(referenceView: self)
     animator?.delegate = self
-#if !TARGET_INTERFACE_BUILDER
-    if knobRotatingView == nil {
-      // Setting knobRotatingView to anything but nil causes IB to throw an exception
-      knobRotatingView = setupDefaultKnobView()
-    }
-#endif
+    
+    knobRotatingView = setupDefaultKnobView()
 
     let r = frame
     let size = min(r.size.width, r.size.height)
-
-    heightAnchor.constraint(equalToConstant: size).isActive = true
-    widthAnchor.constraint(equalToConstant: size).isActive = true
-
-    layer.cornerRadius = size/2
     
+    let heightGreaterThan = heightAnchor.constraint(greaterThanOrEqualToConstant: 100.0)
+    heightGreaterThan.isActive = true
+    heightGreaterThan.priority = .required
+
+    let hConstraint = heightAnchor.constraint(equalToConstant: size)
+    hConstraint.isActive = true
+    hConstraint.priority = .defaultHigh
+    let wConstraint = widthAnchor.constraint(equalTo: heightAnchor, multiplier: 1.0)
+    wConstraint.isActive = true
+    wConstraint.priority = .defaultHigh
+    
+    layer.cornerRadius = size/2
   }
   
+  // MARK: IB Designable Stuff
+  // This is fiddily extra work but needed for a solid IB experience
   override func prepareForInterfaceBuilder() {
     let r = frame
     let size = min(r.size.width, r.size.height)
     layer.cornerRadius = size/2
-
-    let v = setupDefaultKnobView()
-    v.transform = CGAffineTransform(rotationAngle: CGFloat(_cumulatedAngle))
+    
+    if knobImage == nil {
+      knobRotatingView = setupDefaultKnobView()
+    }
+    knobRotatingView?.transform = CGAffineTransform(rotationAngle: CGFloat(_cumulatedAngle))
+    
+    if knobOverlayImage != nil {
+      let size = min(frame.width, frame.height)
+      _knobOverlayView?.heightAnchor.constraint(equalToConstant: size).isActive = true
+      _knobOverlayView!.widthAnchor.constraint(equalToConstant: size).isActive = true
+    }
   }
+  
+  
   
   override func layoutSubviews() {
     super.layoutSubviews()
@@ -173,6 +219,17 @@ import UIKit
       
       attachmentBehavior = ab
     }
+    
+    
+    if _knobOverlayView != nil {
+
+      _knobOverlayView?.widthAnchor.constraint(equalToConstant: (knobRotatingView?.frame.width)!).isActive = true
+      _knobOverlayView?.heightAnchor.constraint(equalTo: (_knobOverlayView?.widthAnchor)!, multiplier: 1.0).isActive = true
+      
+      _knobOverlayView?.centerXAnchor.constraint(equalTo: (centerXAnchor)).isActive = true
+      _knobOverlayView?.centerYAnchor.constraint(equalTo: (centerYAnchor)).isActive = true
+    }
+    
     
   }
   
@@ -309,13 +366,18 @@ extension KoiWheel {
     return _value
   }
   
-  func setupDefaultKnobView() -> UIView {
-    let padding = CGFloat(8.0)
+  func setupDefaultKnobView() -> UIImageView {
+    
+    if knobRotatingView != nil {
+      knobRotatingView?.removeFromSuperview()
+    }
+    
+    let padding = CGFloat(0.0)
     let size = min(frame.width - padding, frame.height - padding)
     var vframe = CGRect()
     vframe.size = CGSize(width: size, height: size) // Not needed
 
-    let dView = UIView(frame: vframe)
+    let dView = UIImageView(frame: vframe)
 
     dView.translatesAutoresizingMaskIntoConstraints = false
     dView.heightAnchor.constraint(equalToConstant: size).isActive = true
@@ -325,25 +387,33 @@ extension KoiWheel {
 
     dView.backgroundColor = tintColor
     dView.layer.cornerRadius = size/2
-
-    let orientationMarker = CALayer()
-    orientationMarker.backgroundColor = UIColor.white.cgColor
-    orientationMarker.cornerRadius = size/(2*d)
-    orientationMarker.shadowColor = UIColor.gray.cgColor
-    orientationMarker.shadowRadius = CGFloat(3.0)
-    orientationMarker.shadowOffset = CGSize(width: 2.0, height: 2.0)
-    orientationMarker.shadowOpacity = 0.15
-
-    orientationMarker.frame = CGRect(x: size/2 - size/(2 * d), y: size/15, width: size/d, height: size/d)
-
-    dView.layer.addSublayer(orientationMarker)
     
-    self.addSubview(dView)
+    if knobImage != nil {
+      dView.image = knobImage
+    } else {
+
+      let orientationMarker = CALayer()
+      orientationMarker.backgroundColor = UIColor.white.cgColor
+      orientationMarker.cornerRadius = size/(2*d)
+      orientationMarker.shadowColor = UIColor.gray.cgColor
+      orientationMarker.shadowRadius = CGFloat(3.0)
+      orientationMarker.shadowOffset = CGSize(width: 2.0, height: 2.0)
+      orientationMarker.shadowOpacity = 0.15
+
+      orientationMarker.frame = CGRect(x: size/2 - size/(2 * d), y: size/15, width: size/d, height: size/d)
+
+      dView.layer.addSublayer(orientationMarker)
+    }
+    
+    addSubview(dView)
+    sendSubviewToBack(dView)
+    
     dView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
     dView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
     
     isDefaultKnobView = true
     
+    print("\(#line) \(#function)")
     return dView
   }
   
