@@ -102,7 +102,7 @@ import UIKit
     }
   }
   
-  @IBOutlet var knobRotatingView: UIImageView?
+  @IBOutlet var knobRotatingView: UIView?
   // Just used so I can update knob default color when tintColor changes
   // Probably smarter way to do this
   private var isDefaultKnobView = false
@@ -162,7 +162,7 @@ import UIKit
     
     knobRotatingView = setupDefaultKnobView()
 
-    let r = frame
+    let r = bounds
     let size = min(r.size.width, r.size.height)
     
     let heightGreaterThan = heightAnchor.constraint(greaterThanOrEqualToConstant: 100.0)
@@ -177,6 +177,8 @@ import UIKit
     wConstraint.priority = .defaultHigh
     
     layer.cornerRadius = size/2
+    
+    clipsToBounds = true
   }
   
   // MARK: - IB Designable Stuff
@@ -241,7 +243,8 @@ import UIKit
       _knobOverlayView?.centerXAnchor.constraint(equalTo: (centerXAnchor)).isActive = true
       _knobOverlayView?.centerYAnchor.constraint(equalTo: (centerYAnchor)).isActive = true
     }
-    print("\(#function) END --- _knobOverlayView?.bounds.size = \(_knobOverlayView?.bounds.size)")
+    
+    print("\(#function) END --- \n_knobOverlayView?.bounds.size = \(_knobOverlayView?.bounds.size)\nself.bounds.size = \(self.bounds.size)")
     
   }
   
@@ -380,7 +383,7 @@ extension KoiWheel {
     return _value
   }
   
-  func setupDefaultKnobView() -> UIImageView {
+  func setupDefaultKnobView() -> UIView {
     if knobRotatingView != nil {
       knobRotatingView?.removeFromSuperview()
     }
@@ -392,7 +395,7 @@ extension KoiWheel {
     
     print("\(#function): SIZE = \(size)")
 
-    let dView = UIImageView()//frame: vframe)
+    let dView = UIView(frame: vframe)
     
     let d: CGFloat = 5.0
 
@@ -401,7 +404,13 @@ extension KoiWheel {
     dView.contentMode = .scaleAspectFit
     
     if knobImage != nil {
-      dView.image = knobImage
+//      dView.image = knobImage
+      let imageLayer = CALayer()
+      imageLayer.contents = knobImage?.cgImage
+      imageLayer.backgroundColor = UIColor.purple.cgColor
+      imageLayer.frame = vframe//self.bounds
+      dView.layer.addSublayer(imageLayer)
+      
     } else {
 
       _orientationMarker = CALayer()
@@ -421,8 +430,10 @@ extension KoiWheel {
     sendSubviewToBack(dView)
     
     dView.translatesAutoresizingMaskIntoConstraints = false
-    dView.heightAnchor.constraint(greaterThanOrEqualToConstant: size).isActive = true//(equalToConstant: bounds.size.width).isActive = true
-    dView.widthAnchor.constraint(equalTo: dView.heightAnchor, multiplier: 1.0).isActive = true
+//    dView.heightAnchor.constraint(greaterThanOrEqualToConstant: size).isActive = true//(equalToConstant: bounds.size.width).isActive = true
+//    dView.heightAnchor.constraint(lessThanOrEqualTo: heightAnchor, multiplier: 1.0).isActive = true
+//    dView.heightAnchor.constraint(lessThanOrEqualTo: heightAnchor, multiplier: 1.0).priority = UILayoutPriority(rawValue: 999.0)
+//    dView.widthAnchor.constraint(equalTo: dView.heightAnchor, multiplier: 1.0).isActive = true
     
 //    dView.topAnchor.constraint(equalTo: topAnchor)
 //    dView.bottomAnchor.constraint(equalTo: bottomAnchor)
