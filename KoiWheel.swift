@@ -69,6 +69,7 @@ import UIKit
     }
   }
   
+  var _knobLayer = CALayer()
   @IBInspectable var knobImage: UIImage? {
     didSet {
       knobRotatingView = setupDefaultKnobView()
@@ -203,7 +204,7 @@ import UIKit
   
   
   override func layoutSubviews() {
-    print("\(#function) START +++ _knobOverlayView?.bounds.size = \(_knobOverlayView?.bounds.size)")
+    
     super.layoutSubviews()
 
     guard animator != nil else { return }
@@ -212,6 +213,7 @@ import UIKit
       var r = frame
       r.origin = CGPoint.zero
       let size = min(r.size.width, r.size.height)
+      layer.cornerRadius = size/2
 
       _outerRadius  = size/2
       _innerRadius = (6 * _outerRadius)/100
@@ -231,21 +233,25 @@ import UIKit
       
       attachmentBehavior = ab
       
-//      v.bounds = bounds
+      v.bounds = bounds
+      _knobLayer.frame = bounds
+      
+      v.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1.0).isActive = true
+      v.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 1.0).isActive = true
+      
+      v.centerXAnchor.constraint(equalTo: (centerXAnchor)).isActive = true
+      v.centerYAnchor.constraint(equalTo: (centerYAnchor)).isActive = true
     }
     
     
     if _knobOverlayView != nil {
-
-      _knobOverlayView?.widthAnchor.constraint(equalToConstant: (knobRotatingView?.frame.width)!).isActive = true
-      _knobOverlayView?.heightAnchor.constraint(equalTo: (_knobOverlayView?.widthAnchor)!, multiplier: 1.0).isActive = true
+      
+      _knobOverlayView?.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1.0).isActive = true
+      _knobOverlayView?.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 1.0).isActive = true
       
       _knobOverlayView?.centerXAnchor.constraint(equalTo: (centerXAnchor)).isActive = true
       _knobOverlayView?.centerYAnchor.constraint(equalTo: (centerYAnchor)).isActive = true
     }
-    
-    print("\(#function) END --- \n_knobOverlayView?.bounds.size = \(_knobOverlayView?.bounds.size)\nself.bounds.size = \(self.bounds.size)")
-    
   }
   
 // MARK: Sending Actions
@@ -396,6 +402,7 @@ extension KoiWheel {
     print("\(#function): SIZE = \(size)")
 
     let dView = UIView(frame: vframe)
+    dView.isUserInteractionEnabled = false
     
     let d: CGFloat = 5.0
 
@@ -405,11 +412,10 @@ extension KoiWheel {
     
     if knobImage != nil {
 //      dView.image = knobImage
-      let imageLayer = CALayer()
-      imageLayer.contents = knobImage?.cgImage
-      imageLayer.backgroundColor = UIColor.purple.cgColor
-      imageLayer.frame = vframe//self.bounds
-      dView.layer.addSublayer(imageLayer)
+      _knobLayer.contents = knobImage?.cgImage
+      _knobLayer.frame = vframe
+      dView.layer.addSublayer(_knobLayer)
+      dView.clipsToBounds = true
       
     } else {
 
@@ -429,17 +435,7 @@ extension KoiWheel {
     addSubview(dView)
     sendSubviewToBack(dView)
     
-    dView.translatesAutoresizingMaskIntoConstraints = false
-//    dView.heightAnchor.constraint(greaterThanOrEqualToConstant: size).isActive = true//(equalToConstant: bounds.size.width).isActive = true
-//    dView.heightAnchor.constraint(lessThanOrEqualTo: heightAnchor, multiplier: 1.0).isActive = true
-//    dView.heightAnchor.constraint(lessThanOrEqualTo: heightAnchor, multiplier: 1.0).priority = UILayoutPriority(rawValue: 999.0)
-//    dView.widthAnchor.constraint(equalTo: dView.heightAnchor, multiplier: 1.0).isActive = true
-    
-//    dView.topAnchor.constraint(equalTo: topAnchor)
-//    dView.bottomAnchor.constraint(equalTo: bottomAnchor)
-
-    dView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-    dView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+    dView.translatesAutoresizingMaskIntoConstraints = false  
     
     isDefaultKnobView = true
     
