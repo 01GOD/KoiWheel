@@ -177,7 +177,7 @@ import UIKit
     wConstraint.isActive = true
     wConstraint.priority = .defaultHigh
     
-    layer.cornerRadius = size/2
+//    layer.cornerRadius = size/2
     
     clipsToBounds = true
   }
@@ -187,10 +187,20 @@ import UIKit
   override func prepareForInterfaceBuilder() {
     let r = frame
     let size = min(r.size.width, r.size.height)
-    layer.cornerRadius = size/2
+//    layer.cornerRadius = size/2
     
     if knobImage == nil {
       knobRotatingView = setupDefaultKnobView()
+      if let v = knobRotatingView {
+        v.bounds = bounds
+        _knobLayer.frame = bounds
+        
+        v.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1.0).isActive = true
+        v.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 1.0).isActive = true
+        
+        v.centerXAnchor.constraint(equalTo: (centerXAnchor)).isActive = true
+        v.centerYAnchor.constraint(equalTo: (centerYAnchor)).isActive = true
+      }
     }
     knobRotatingView?.transform = CGAffineTransform(rotationAngle: CGFloat(_cumulatedAngle))
     
@@ -213,7 +223,7 @@ import UIKit
       var r = frame
       r.origin = CGPoint.zero
       let size = min(r.size.width, r.size.height)
-      layer.cornerRadius = size/2
+//      layer.cornerRadius = size/2
 
       _outerRadius  = size/2
       _innerRadius = (6 * _outerRadius)/100
@@ -331,7 +341,6 @@ import UIKit
       
       // Rotate Knob View
       knobRotatingView?.transform = CGAffineTransform(rotationAngle: CGFloat(_cumulatedAngle))
-//      knobRotatingView?.bounds = bounds
       
       // Update  Angular Velocity
       _angularVelocity = (_dTheta/CGFloat(elapsed_time))
@@ -354,7 +363,6 @@ import UIKit
     
     
     if minVelocity < sqrt(pow(Double(_angularVelocity), 2.0)) {
-      // TODO: Have Default knobRotatingView
       rotationBehaviour = UIDynamicItemBehavior(items: [knobRotatingView!])
       rotationBehaviour?.allowsRotation = true
       rotationBehaviour?.friction = 0
@@ -407,7 +415,6 @@ extension KoiWheel {
     let d: CGFloat = 5.0
 
     dView.backgroundColor = tintColor
-    dView.layer.cornerRadius = size/2
     dView.contentMode = .scaleAspectFit
     
     if knobImage != nil {
@@ -418,7 +425,8 @@ extension KoiWheel {
       dView.clipsToBounds = true
       
     } else {
-
+      dView.layer.cornerRadius = size/2
+      
       _orientationMarker = CALayer()
       _orientationMarker?.backgroundColor = markerColor.cgColor
       _orientationMarker?.cornerRadius = size/(2*d)
@@ -562,9 +570,9 @@ extension KoiWheel {
 
 }
 
-
+// MARK: - UIDynamicAnimatorDelegate
 extension KoiWheel: UIDynamicAnimatorDelegate {
-  
+   
    func dynamicAnimatorDidPause(_ animator: UIDynamicAnimator) {
     
     guard let kt = knobRotatingView?.transform else { return }
@@ -591,6 +599,5 @@ extension KoiWheel: UIDynamicAnimatorDelegate {
       knobTransformPollingTimer?.invalidate()
     }
   }
-  
   
 }
