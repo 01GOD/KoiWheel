@@ -137,7 +137,6 @@ import UIKit
   private var _innerRadius: CGFloat = 0.0
   private var _outerRadius: CGFloat = 0.0
   
-  var knobTransformPollingTimer: Timer? // TODO: Replace with action block
   var attachmentBehavior: UIAttachmentBehavior?
   var rotationBehaviour: UIDynamicItemBehavior?
   
@@ -284,13 +283,6 @@ import UIKit
       _angularVelocity = 0
       animator?.removeAllBehaviors()
       
-//      print("DEBUG: Stop Rotation knob Rotation Angle \(_cumulatedAngle)")
-      
-      if knobTransformPollingTimer != nil &&
-        knobTransformPollingTimer!.isValid {
-        knobTransformPollingTimer?.invalidate()
-      }
-      
       _last_timestamp = event!.timestamp
     }
     
@@ -369,13 +361,11 @@ import UIKit
       rotationBehaviour?.angularResistance = CGFloat(angularResistance)
       rotationBehaviour?.addAngularVelocity(CGFloat(_angularVelocity), for: knobRotatingView!)
       
-      animator?.addBehavior(rotationBehaviour!)
+      rotationBehaviour?.action = {
+        self.animatorUpdateAngleValue()
+      }
       
-      if (knobTransformPollingTimer != nil) { knobTransformPollingTimer?.invalidate() }
-      knobTransformPollingTimer = Timer.scheduledTimer(timeInterval: 0.05, target: self,
-                                                       selector: #selector(animatorUpdateAngleValue),
-                                                       userInfo: nil,
-                                                       repeats: true)
+      animator?.addBehavior(rotationBehaviour!)
     }
     
     snapToBoundsIfNeeded()
@@ -541,7 +531,7 @@ extension KoiWheel {
       snapToBoundsIfNeeded()
       _cumulatedAngle = _maxAngle
     } else {
-      if knobTransformPollingTimer != nil {
+      if (animator?.isRunning)! {
         _cumulatedAngle += _dTheta
       } else {
         // Rotate Knob View after Value is Changed programmatically
@@ -589,15 +579,8 @@ extension KoiWheel: UIDynamicAnimatorDelegate {
     } else {
       animatorUpdateAngleValue()
     }
-  
-    // TODO: Send value change actions to targets?
-//    value = Double(_cumulatedAngle/(2 * .pi))
-    dprint("DEBUG: \(#function) \(value)")
     
-    if knobTransformPollingTimer != nil &&
-      (knobTransformPollingTimer?.isValid)! {
-      knobTransformPollingTimer?.invalidate()
-    }
+    dprint("DEBUG: \(#function) \(value)")
   }
   
 }
