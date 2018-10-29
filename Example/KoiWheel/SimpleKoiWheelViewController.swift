@@ -16,7 +16,7 @@ class SimpleKoiWheelViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    updateColors(value: 0.0)
+    updateColors(value: wheel.value)
   }
   
   override func viewDidLoad() {

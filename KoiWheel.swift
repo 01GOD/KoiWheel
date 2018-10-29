@@ -19,7 +19,7 @@ import UIKit
   @IBInspectable var value: Double {
     get {
       let _value = clamp(Double(_cumulatedAngle/(2 * CGFloat.pi)))
-      dprint("_cumulatedAngle: \(_cumulatedAngle) \n(2 * .pi): \((2 * CGFloat.pi)) \nvalue: \(_value) \n_cumulatedAngle/(2 * CGFloat.pi): \(_cumulatedAngle/(2 * CGFloat.pi))")
+      dprint("_cumulatedAngle: \(_cumulatedAngle) \n(2 * .pi): \((2 * CGFloat.pi)) \nvalue: \(_value) \n_cumulatedAngle/(2 * CGFloat.pi): \(_cumulatedAngle/(2 * CGFloat.pi))\n")
      
       return _value
     }
@@ -106,7 +106,7 @@ import UIKit
   }
   
   @IBOutlet var knobRotatingView: UIView?
-  // Just used so I can update knob default color when tintColor changes
+  // TODO: Just used so I can update knob default color when tintColor changes
   // Probably smarter way to do this
   private var isDefaultKnobView = false
   private var _orientationMarker: CALayer?
@@ -186,9 +186,6 @@ import UIKit
   // MARK: - IB Designable Stuff
   // This is fiddily extra work but needed for a solid IB experience
   override func prepareForInterfaceBuilder() {
-    let r = frame
-    let size = min(r.size.width, r.size.height)
-//    layer.cornerRadius = size/2
     
     if knobImage == nil {
       knobRotatingView = setupDefaultKnobView()
@@ -221,15 +218,26 @@ import UIKit
     guard animator != nil else { return }
     
     if let v = knobRotatingView {
+      v.bounds = bounds
+      _knobLayer.frame = bounds
+      
+      v.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1.0).isActive = true
+      v.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 1.0).isActive = true
+      
+      v.centerXAnchor.constraint(equalTo: (centerXAnchor)).isActive = true
+      v.centerYAnchor.constraint(equalTo: (centerYAnchor)).isActive = true
+      
+      v.transform = CGAffineTransform(rotationAngle: CGFloat(_cumulatedAngle))
+      
+      // Set Up Rotation behaviour
       var r = frame
       r.origin = CGPoint.zero
       let size = min(r.size.width, r.size.height)
-//      layer.cornerRadius = size/2
-
+      
       _outerRadius  = size/2
       _innerRadius = (6 * _outerRadius)/100
       _midPoint = CGPoint(x: r.size.width/2, y: r.size.height/2)
-
+      
       if attachmentBehavior != nil {
         animator!.removeBehavior(attachmentBehavior!)
       }
@@ -239,19 +247,10 @@ import UIKit
       ab.damping = 1000
       ab.length = 0
       ab.frequency = 0
-
+      
       self.animator!.addBehavior(ab)
       
       attachmentBehavior = ab
-      
-      v.bounds = bounds
-      _knobLayer.frame = bounds
-      
-      v.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1.0).isActive = true
-      v.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 1.0).isActive = true
-      
-      v.centerXAnchor.constraint(equalTo: (centerXAnchor)).isActive = true
-      v.centerYAnchor.constraint(equalTo: (centerYAnchor)).isActive = true
     }
     
     
@@ -287,8 +286,6 @@ import UIKit
       
       _last_timestamp = event!.timestamp
     }
-    
-//    knobRotatingView?.bounds = bounds
     return shouldBeginTracking
   }
   
@@ -579,7 +576,7 @@ extension KoiWheel: UIDynamicAnimatorDelegate {
       animatorUpdateAngleValue()
     }
     
-    dprint("DEBUG: \(#function) \(value)")
+    dprint("\(#function) \(value)")
   }
   
 }
