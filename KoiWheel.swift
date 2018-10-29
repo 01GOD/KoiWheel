@@ -82,7 +82,10 @@ import UIKit
         _knobOverlayView?.removeFromSuperview()
       }
       
-      guard knobOverlayImage != nil else { return }
+      guard knobOverlayImage != nil else {
+        _knobOverlayView?.isHidden = true
+        return
+      }
       
       _knobOverlayView = UIImageView(image: knobOverlayImage)
       _knobOverlayView?.translatesAutoresizingMaskIntoConstraints = false
@@ -252,7 +255,7 @@ import UIKit
     }
     
     
-    if _knobOverlayView != nil {
+    if _knobOverlayView != nil && _knobOverlayView?.isHidden == false {
       
       _knobOverlayView?.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1.0).isActive = true
       _knobOverlayView?.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 1.0).isActive = true
