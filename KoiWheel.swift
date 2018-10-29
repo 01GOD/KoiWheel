@@ -92,7 +92,6 @@ import UIKit
       
       addSubview(_knobOverlayView!)
       bringSubviewToFront(_knobOverlayView!)
-      print("\(#function) _knobOverlayView?.bounds.size = \(_knobOverlayView?.bounds.size)")
       setNeedsLayout()
     }
   }
@@ -397,7 +396,7 @@ extension KoiWheel {
     var vframe = CGRect()
     vframe.size = CGSize(width: size, height: size) // Not needed
     
-    print("\(#function): SIZE = \(size)")
+    dprint("\(#function): SIZE = \(size)")
 
     let dView = UIView(frame: vframe)
     dView.isUserInteractionEnabled = false
@@ -437,7 +436,6 @@ extension KoiWheel {
     
     isDefaultKnobView = true
     
-    print("\(#line) \(#function)")
     return dView
   }
   
@@ -534,9 +532,7 @@ extension KoiWheel {
       if (animator?.isRunning)! {
         _cumulatedAngle += _dTheta
       } else {
-        // Rotate Knob View after Value is Changed programmatically
         knobRotatingView?.transform = CGAffineTransform(rotationAngle: CGFloat(_cumulatedAngle))
-        print("Rotate Knob View after Value is Changed programmatically \(#line)")
       }
     }
     
