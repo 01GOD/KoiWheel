@@ -14,19 +14,15 @@ class SimpleKoiWheelViewController: UIViewController {
   @IBOutlet weak var wheelValueLabel: UILabel!
   @IBOutlet weak var wheel: KoiWheel!
   
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    updateColors(value: wheel.value)
-  }
-  
   override func viewDidLoad() {
     super.viewDidLoad()
-    wheelValueLabel.text = String.localizedStringWithFormat("%.3f", wheel.value)
+    wheelValueLabel.text = String.localizedStringWithFormat("%.2f", wheel.value)
+    updateColors(value: wheel.value)
     
   }
   
   @IBAction func onWheelValueChanged(_ sender: KoiWheel) {
-    wheelValueLabel.text = String.localizedStringWithFormat("%.3f", sender.value)
+    wheelValueLabel.text = String.localizedStringWithFormat("%.2f", sender.value)
     
     updateColors(value: sender.value)
   }

@@ -37,7 +37,7 @@ class ConfigurableViewController: UIViewController {
   }
   
   @IBAction func onWheelValueChanged(_ sender: KoiWheel) {
-    wheelValueLabel.text = String.localizedStringWithFormat("%.3f", sender.value)
+    wheelValueLabel.text = String.localizedStringWithFormat("%.2f", sender.value)
   }
   
   
