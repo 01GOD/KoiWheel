@@ -8,7 +8,7 @@
 A customisable subclass of UIControl which allows you to create a Jog Wheel or Knob.
 
 ## Preview
-![preview](media/simple_color.gif)
+![preview](Media/simple_color.gif)
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
