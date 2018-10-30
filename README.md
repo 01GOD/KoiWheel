@@ -5,6 +5,13 @@
 [![License](https://img.shields.io/cocoapods/l/KoiWheel.svg?style=flat)](https://cocoapods.org/pods/KoiWheel)
 [![Platform](https://img.shields.io/cocoapods/p/KoiWheel.svg?style=flat)](https://cocoapods.org/pods/KoiWheel)
 
+A customisable subclass of UIControl which allows you to create a Jog Wheel or Knob.
+
+## Preview
+![preview](media/simple_color.gif)
+
+To run the example project, clone the repo, and run `pod install` from the Example directory first.
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
