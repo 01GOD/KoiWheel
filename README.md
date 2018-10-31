@@ -9,8 +9,12 @@ A customisable subclass of UIControl which allows you to create a Jog Wheel or K
 
 ## Preview
 ![preview](Media/simple_color.gif)
+
 Updating the Wheel's Tint Color based on its value.
 
+![image](Media/image_example.gif)
+
+Custom Knob/Wheel image
 ## Usage
 Drag and drop an `UIView` object into your view controller and set its class and module to `KoiWheel`.
 
@@ -21,17 +25,15 @@ Drag and drop an `UIView` object into your view controller and set its class and
 | Minimum Value      | The Smallest Value of the Wheel.     | 0.0 |
 | Maximum Value      | The Largest Value of the Wheel.     | 100.0 |
 | Angular Resistance      | The greater the value the faster rotation slows to a stop.     | 1.0 |
-| Marker Color      | The color of the Orientation Marker. The marker is only visable if Knob Image is `nil`     | `UIColor.white` |
-| Knob Image      | An image for custom designing the wheel. Setting this to a non-nil value hides default Orientation Marker     | `nil` |
+| Marker Color      | The color of the Orientation Marker. The marker is only visable if Knob Image is `nil`.     | `.white` |
+| Knob Image      | An image for custom designing the wheel. Setting this to a non-nil value hides default Orientation Marker.     | `nil` |
 | Knob Overlay Image      | An non-rotating decoration image for custom designing the wheel (eg. the glare on a record).      | `nil` |
-| Overlay Alpha      | The alpha of the overlay image     | 1.0 |
+| Overlay Alpha      | The alpha of the overlay image.     | 1.0 |
 
 
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## Requirements
 
 ## Installation
 
@@ -44,7 +46,9 @@ pod 'KoiWheel'
 
 ## Author
 
-kwabford, kwabford@gmail.com
+Kwab Fordjour
+- [LinkedIn](https://www.linkedin.com/in/kwab-fordjour-b872b229/)
+- [Twitter](https://twitter.com/kwabford)
 
 ## License
 
