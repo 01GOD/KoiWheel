@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/cocoapods/l/KoiWheel.svg?style=flat)](https://cocoapods.org/pods/KoiWheel)
 [![Platform](https://img.shields.io/cocoapods/p/KoiWheel.svg?style=flat)](https://cocoapods.org/pods/KoiWheel)
 
-A customizable subclass of UIControl which allows you to create a Jog Wheel , Turntable or Knob.
+A customizable subclass of UIControl which allows you to create a Jog Wheel, Turntable or Knob.
 
 ## Preview
 ![preview](Media/simple_color.gif)
