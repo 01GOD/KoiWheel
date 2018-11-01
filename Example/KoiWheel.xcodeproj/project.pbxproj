@@ -11,6 +11,10 @@
 		4892A273216D9B9400883B0C /* record_glare@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4892A271216D9B9400883B0C /* record_glare@3x.png */; };
 		4892A274216D9B9400883B0C /* record@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4892A272216D9B9400883B0C /* record@3x.png */; };
 		4892A276216DB36700883B0C /* ConfigurableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4892A275216DB36700883B0C /* ConfigurableViewController.swift */; };
+		48D5E585218A710500610EDE /* simple_glyph@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48D5E583218A710500610EDE /* simple_glyph@3x.png */; };
+		48D5E586218A710500610EDE /* simple_glyph_full@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48D5E584218A710500610EDE /* simple_glyph_full@3x.png */; };
+		48D5E588218A738300610EDE /* configure_glyph@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48D5E587218A738300610EDE /* configure_glyph@3x.png */; };
+		48D5E58A218A75B000610EDE /* Iconizer Assets in Resources */ = {isa = PBXBuildFile; fileRef = 48D5E589218A75B000610EDE /* Iconizer Assets */; };
 		48FC345C216BCF0E00D95EBE /* KoiWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FC345B216BCF0E00D95EBE /* KoiWheel.swift */; };
 		4A7396577D79B343FBCCABFF /* Pods_KoiWheel_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF90A016C8924532F96979F1 /* Pods_KoiWheel_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
@@ -39,6 +43,10 @@
 		4892A271216D9B9400883B0C /* record_glare@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "record_glare@3x.png"; sourceTree = "<group>"; };
 		4892A272216D9B9400883B0C /* record@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "record@3x.png"; sourceTree = "<group>"; };
 		4892A275216DB36700883B0C /* ConfigurableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableViewController.swift; sourceTree = "<group>"; };
+		48D5E583218A710500610EDE /* simple_glyph@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "simple_glyph@3x.png"; sourceTree = "<group>"; };
+		48D5E584218A710500610EDE /* simple_glyph_full@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "simple_glyph_full@3x.png"; sourceTree = "<group>"; };
+		48D5E587218A738300610EDE /* configure_glyph@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "configure_glyph@3x.png"; sourceTree = "<group>"; };
+		48D5E589218A75B000610EDE /* Iconizer Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Iconizer Assets"; sourceTree = "<group>"; };
 		48FC345B216BCF0E00D95EBE /* KoiWheel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KoiWheel.swift; path = ../../KoiWheel.swift; sourceTree = "<group>"; };
 		4B13B80F280BD40CF16F285C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* KoiWheel_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KoiWheel_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +118,9 @@
 				4892A275216DB36700883B0C /* ConfigurableViewController.swift */,
 				4892A271216D9B9400883B0C /* record_glare@3x.png */,
 				4892A272216D9B9400883B0C /* record@3x.png */,
+				48D5E584218A710500610EDE /* simple_glyph_full@3x.png */,
+				48D5E583218A710500610EDE /* simple_glyph@3x.png */,
+				48D5E587218A738300610EDE /* configure_glyph@3x.png */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -147,6 +158,7 @@
 		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
+				48D5E589218A75B000610EDE /* Iconizer Assets */,
 				2BB215E300BB2C053AF27173 /* KoiWheel.podspec */,
 				9EF29249C7C3867B03DAD3AA /* README.md */,
 				4B13B80F280BD40CF16F285C /* LICENSE */,
@@ -263,9 +275,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48D5E585218A710500610EDE /* simple_glyph@3x.png in Resources */,
+				48D5E586218A710500610EDE /* simple_glyph_full@3x.png in Resources */,
 				4892A274216D9B9400883B0C /* record@3x.png in Resources */,
+				48D5E588218A738300610EDE /* configure_glyph@3x.png in Resources */,
 				4892A273216D9B9400883B0C /* record_glare@3x.png in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
+				48D5E58A218A75B000610EDE /* Iconizer Assets in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);

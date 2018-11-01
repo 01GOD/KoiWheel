@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/cocoapods/l/KoiWheel.svg?style=flat)](https://cocoapods.org/pods/KoiWheel)
 [![Platform](https://img.shields.io/cocoapods/p/KoiWheel.svg?style=flat)](https://cocoapods.org/pods/KoiWheel)
 
-A customisable subclass of UIControl which allows you to create a Jog Wheel or Knob.
+A customisable subclass of UIControl which allows you to create a Jog Wheel , Turntable or Knob.
 
 ## Preview
 ![preview](Media/simple_color.gif)
@@ -15,7 +15,7 @@ Updating the Wheel's Tint Color based on its value.
 
 ![image](Media/image_example.gif)
 
-Custom Knob/Wheel image
+Custom Wheel image, Custom Overlay Image and an Agular Resistance set to 0.0.
 ## Usage
 Drag and drop an `UIView` object into your view controller and set its class and module to `KoiWheel`.
 
