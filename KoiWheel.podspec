@@ -33,6 +33,8 @@ Developers can adjust the Angular Resistance of the wheel to customize its feel.
 
   s.source_files = 'KoiWheel/Classes/**/*'
   
+  s.swift_version = '4.2'
+  
   # s.resource_bundles = {
   #   'KoiWheel' => ['KoiWheel/Assets/*.png']
   # }
