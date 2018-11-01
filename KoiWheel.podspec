@@ -23,7 +23,7 @@ Developers can adjust the Angular Resistance of the wheel to customize its feel.
                        DESC
 
   s.homepage         = 'https://github.com/kwabford/KoiWheel'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.screenshots     = 'https://raw.githubusercontent.com/kwabford/KoiWheel/master/Media/screenshot1.png', 'https://raw.githubusercontent.com/kwabford/KoiWheel/master/Media/screenshot2.png'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'kwabford' => 'kwabford@gmail.com' }
   s.source           = { :git => 'https://github.com/kwabford/KoiWheel.git', :tag => s.version.to_s }
