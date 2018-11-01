@@ -251,6 +251,13 @@ import UIKit
       self.animator!.addBehavior(ab)
       
       attachmentBehavior = ab
+      
+      // Adjust Corner radius if knob image is not set
+      if knobImage == nil {
+        v.layer.cornerRadius = size/2
+      } else {
+        v.layer.cornerRadius = 0.0
+      }
     }
     
     

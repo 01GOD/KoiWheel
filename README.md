@@ -8,12 +8,12 @@
 A customizable subclass of UIControl which allows you to create a Jog Wheel, Turntable or Knob.
 
 ## Preview
-![preview](Media/simple_color.gif)
+![preview](https://raw.githubusercontent.com/kwabford/KoiWheel/master/Media/simple_color.gif)
 
 Updating the Wheel's Tint Color based on its value.
 
 
-![image](Media/image_example.gif)
+![image](https://raw.githubusercontent.com/kwabford/KoiWheel/master/Media/image_example.gif)
 
 Custom Wheel image, Custom Overlay Image and an Angular Resistance set to 0.0.
 ## Usage

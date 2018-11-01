@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'KoiWheel'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'A customizable subclass of UIControl which allows you to create a Jog Wheel, Turntable or Knob.'
 
 # This description is used to generate tags and improve search results.
