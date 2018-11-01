@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/cocoapods/l/KoiWheel.svg?style=flat)](https://cocoapods.org/pods/KoiWheel)
 [![Platform](https://img.shields.io/cocoapods/p/KoiWheel.svg?style=flat)](https://cocoapods.org/pods/KoiWheel)
 
-A customisable subclass of UIControl which allows you to create a Jog Wheel , Turntable or Knob.
+A customizable subclass of UIControl which allows you to create a Jog Wheel , Turntable or Knob.
 
 ## Preview
 ![preview](Media/simple_color.gif)
@@ -15,7 +15,7 @@ Updating the Wheel's Tint Color based on its value.
 
 ![image](Media/image_example.gif)
 
-Custom Wheel image, Custom Overlay Image and an Agular Resistance set to 0.0.
+Custom Wheel image, Custom Overlay Image and an Angular Resistance set to 0.0.
 ## Usage
 Drag and drop an `UIView` object into your view controller and set its class and module to `KoiWheel`.
 
@@ -26,9 +26,9 @@ Drag and drop an `UIView` object into your view controller and set its class and
 | Minimum Value      | The Smallest Value of the Wheel.     | 0.0 |
 | Maximum Value      | The Largest Value of the Wheel.     | 100.0 |
 | Angular Resistance      | The greater the value the faster rotation slows to a stop.     | 1.0 |
-| Marker Color      | The color of the Orientation Marker. The marker is only visable if Knob Image is `nil`.     | `white` |
+| Marker Color      | The color of the Orientation Marker. The marker is only visible if Knob Image is `nil`.     | `white` |
 | Knob Image      | An image for custom designing the wheel. Setting this to a non-nil value hides default Orientation Marker.     | `nil` |
-| Knob Overlay Image      | An non-rotating decoration image for custom designing the wheel (eg. the glare on a record).      | `nil` |
+| Knob Overlay Image      | A non-rotating decoration image for custom designing the wheel (eg. the glare on a record).      | `nil` |
 | Overlay Alpha      | The alpha of the overlay image.     | 1.0 |
 
 
